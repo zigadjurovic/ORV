@@ -30,3 +30,9 @@ Train_Data=tf.keras.preprocessing.image.ImageDataGenerator(
 model = vgg_face()
 model.load_weights('vgg_face_weights.h5')
 model = Model(inputs=model.layers[0].input, outputs=model.layers[-2].output)
+
+
+# Extract Embedding Vectors
+model = vgg_face()
+model.load_weights('vgg_face_weights.h5')
+model = Model(inputs=model.layers[0].input, outputs=model.layers[-2].output)
