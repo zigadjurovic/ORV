@@ -10,9 +10,17 @@ from sklearn.decomposition import PCA
 from sklearn.svm import SVC
 from facenet_pytorch import MTCNN
 
-
+# Model Architecture
 def vgg_face():
     model = Sequential()
     # model layers definition omitted for brevity...
     model.add(Activation('softmax'))
     return model
+
+
+# Prepare Training Data
+train_dir='captured_frames'
+Train_Data=tf.keras.preprocessing.image.ImageDataGenerator(
+    horizontal_flip=True,
+    rescale=1/255.0,
+).flow_from_directory(train_dir,batch_size=16,target_size=(224,224),shuffle=False)
