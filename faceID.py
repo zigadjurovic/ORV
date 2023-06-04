@@ -9,3 +9,10 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.svm import SVC
 from facenet_pytorch import MTCNN
+
+
+def vgg_face():
+    model = Sequential()
+    # model layers definition omitted for brevity...
+    model.add(Activation('softmax'))
+    return model
