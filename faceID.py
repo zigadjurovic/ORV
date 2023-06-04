@@ -40,3 +40,9 @@ np.save('ydata',Train_Data.labels)
 
 # Prepare training and testing sets
 X_train,X_test,y_train,y_test=train_test_split(embedding_vector,Train_Data.labels,test_size=0.1,stratify=Train_Data.labels,random_state=42)
+
+
+# Standardize features
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
