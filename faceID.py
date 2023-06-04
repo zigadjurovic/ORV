@@ -33,6 +33,10 @@ model = Model(inputs=model.layers[0].input, outputs=model.layers[-2].output)
 
 
 # Extract Embedding Vectors
-model = vgg_face()
-model.load_weights('vgg_face_weights.h5')
-model = Model(inputs=model.layers[0].input, outputs=model.layers[-2].output)
+embedding_vector = model.predict(Train_Data,steps=len(Train_Data))
+np.save('Xdata',embedding_vector)
+np.save('ydata',Train_Data.labels)
+
+
+# Prepare training and testing sets
+X_train,X_test,y_train,y_test=train_test_split(embedding_vector,Train_Data.labels,test_size=0.1,stratify=Train_Data.labels,random_state=42)
