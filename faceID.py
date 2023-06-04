@@ -24,3 +24,9 @@ Train_Data=tf.keras.preprocessing.image.ImageDataGenerator(
     horizontal_flip=True,
     rescale=1/255.0,
 ).flow_from_directory(train_dir,batch_size=16,target_size=(224,224),shuffle=False)
+
+
+# Load VGG Face Model
+model = vgg_face()
+model.load_weights('vgg_face_weights.h5')
+model = Model(inputs=model.layers[0].input, outputs=model.layers[-2].output)
