@@ -46,3 +46,11 @@ X_train,X_test,y_train,y_test=train_test_split(embedding_vector,Train_Data.label
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
+
+
+# PCA transformation
+pca = PCA(n_components=27)
+X_train = pca.fit_transform(X_train)
+X_test = pca.transform(X_test)
+
+
