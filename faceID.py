@@ -54,3 +54,6 @@ X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
 
 
+# Training SVC classifier
+clf = SVC(kernel='linear',C=2.,class_weight='balanced',decision_function_shape='ovo',probability=True)
+clf.fit(X_train, y_train)
